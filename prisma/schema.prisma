@@ -1,0 +1,347 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid())
+  email         String   @unique
+  name          String?
+  role          UserRole @default(STUDENT)
+  password      String
+  profileImage  String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  teacherProfile TeacherProfile?
+  studentProfile StudentProfile?
+}
+
+model TeacherProfile {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  specialization String?
+  experience    String?
+  phone         String?
+  
+  resources     Resource[]
+}
+
+model Resource {
+  id          String   @id @default(cuid())
+  title       String
+  type        ResourceType
+  url         String
+  fileSize    String?
+  duration    String?
+  subjectId   String
+  unitId      String
+  teacherId   String
+  teacher     TeacherProfile @relation(fields: [teacherId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  downloads   Int      @default(0)
+  views       Int      @default(0)
+}
+
+enum ResourceType {
+  PDF
+  VIDEO
+  LINK
+}
+
+model Attendance {
+  id        String   @id @default(cuid())
+  studentId String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  date      DateTime
+  status    AttendanceStatus
+  remarks   String?
+  routineId String?
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+}
+
+model Payment {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       StudentProfile @relation(fields: [studentId], references: [id])
+  amount         Float
+  date          DateTime @default(now())
+  month         String
+  year          Int
+  feeType       String
+  method        String
+  status         String   @default("PAID")
+}
+
+model Announcement {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  type        String
+  batchId     String
+  batch       Batch    @relation(fields: [batchId], references: [id])
+  sentViaWhatsApp Boolean @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model MockExam {
+  id                  String   @id @default(cuid())
+  title               String
+  subject             String
+  level               String
+  date                DateTime
+  time                String
+  duration            String
+  fee                 Float
+  maxSeats            Int
+  registeredSeats    Int      @default(0)
+  status              String   @default("OPEN")
+  registrationDeadline DateTime
+  
+  registrations       MockRegistration[]
+}
+
+model MockRegistration {
+  id        String   @id @default(cuid())
+  studentId String
+  mockExamId String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  mockExam  MockExam       @relation(fields: [mockExamId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([studentId, mockExamId])
+}
+
+model Routine {
+  id        String   @id @default(cuid())
+  batchId   String
+  batch     Batch    @relation(fields: [batchId], references: [id])
+  day       String
+  startTime String
+  endTime   String
+  subjectId String
+  unitId    String
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  studentId String
+  unitId    String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  unit      Unit           @relation(fields: [unitId], references: [id])
+  startDate DateTime @default(now())
+  endDate   DateTime?
+  status    String   @default("ACTIVE")
+
+  @@unique([studentId, unitId])
+}
+
+model Batch {
+  id          String   @id @default(uuid())
+  name        String
+  level       String
+  year        Int
+  session     Int    // 1=Jan, 2=May, 3=Oct
+  batchNumber Int
+  subjectId   String
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  startDate   DateTime?
+  endDate     DateTime?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+
+  routines      Routine[]
+  announcements Announcement[]
+}
+
+enum UserRole {
+  ADMIN
+  TEACHER
+  STUDENT
+}
+
+enum StudentStatus {
+  ACTIVE
+  INACTIVE
+  GRADUATED
+  DROPPED
+}
+
+model Subject {
+  id        String   @id @default(uuid())
+  name      String   @unique
+  code      String   @unique
+  description String?
+  createdAt DateTime @default(now())
+  
+  // Relations
+  units     Unit[]
+  enrollments Enrollment[]
+}
+
+model Unit {
+  id          String   @id @default(uuid())
+  subjectId   String
+  subject     Subject  @relation(fields: [subjectId], references: [id])
+  name        String
+  code        String   @unique
+  description String?
+  level       String   // AS/A2/IB/etc
+  createdAt   DateTime @default(now())
+  
+  // Relations
+  enrollments Enrollment[]
+  resources   Resource[]
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  studentId String
+  unitId    String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  unit      Unit           @relation(fields: [unitId], references: [id])
+  startDate DateTime @default(now())
+  endDate   DateTime?
+  status    String   @default("ACTIVE")
+
+  @@unique([studentId, unitId])
+}
+
+model Routine {
+  id        String   @id @default(cuid())
+  batchId   String
+  batch     Batch    @relation(fields: [batchId], references: [id])
+  day       String
+  startTime String
+  endTime   String
+  subjectId String
+  unitId    String
+}
+
+model Resource {
+  id          String   @id @default(cuid())
+  title       String
+  type        ResourceType
+  url         String
+  fileSize    String?
+  duration    String?
+  subjectId   String
+  unitId      String
+  teacherId   String
+  teacher     TeacherProfile @relation(fields: [teacherId], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  downloads   Int      @default(0)
+  views       Int      @default(0)
+}
+
+enum ResourceType {
+  PDF
+  VIDEO
+  LINK
+}
+
+model Attendance {
+  id        String   @id @default(cuid())
+  studentId String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  date      DateTime
+  status    AttendanceStatus
+  remarks   String?
+  routineId String?
+}
+
+enum AttendanceStatus {
+  PRESENT
+  ABSENT
+  LATE
+}
+
+model Payment {
+  id            String   @id @default(cuid())
+  studentId     String
+  student       StudentProfile @relation(fields: [studentId], references: [id])
+  amount         Float
+  date          DateTime @default(now())
+  month         String
+  year          Int
+  feeType       String
+  method        String
+  status         String   @default("PAID")
+}
+
+model Announcement {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  type        String
+  batchId     String
+  batch       Batch    @relation(fields: [batchId], references: [id])
+  sentViaWhatsApp Boolean @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model MockExam {
+  id                  String   @id @default(cuid())
+  title               String
+  subject             String
+  level               String
+  date                DateTime
+  time                String
+  duration            String
+  fee                 Float
+  maxSeats            Int
+  registeredSeats    Int      @default(0)
+  status              String   @default("OPEN")
+  registrationDeadline DateTime
+  
+  registrations       MockRegistration[]
+}
+
+model MockRegistration {
+  id        String   @id @default(cuid())
+  studentId String
+  mockExamId String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  mockExam  MockExam       @relation(fields: [mockExamId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([studentId, mockExamId])
+}
+
+model Routine {
+  id        String   @id @default(cuid())
+  batchId   String
+  batch     Batch    @relation(fields: [batchId], references: [id])
+  day       String
+  startTime String
+  endTime   String
+  subjectId String
+  unitId    String
+}
+
+model Enrollment {
+  id        String   @id @default(cuid())
+  studentId String
+  unitId    String
+  student   StudentProfile @relation(fields: [studentId], references: [id])
+  unit      Unit           @relation(fields: [unitId], references: [id])
+  startDate DateTime @default(now())
+  endDate   DateTime?
+  status    String   @default("ACTIVE")
+
+  @@unique([studentId, unitId])
+}
