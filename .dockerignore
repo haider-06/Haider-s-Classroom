@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+.next/
+out/
+dist/
+build/
+
+# Version control
+.git/
+.gitignore
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Testing
+coverage/
+.jest/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# Misc
+.turbo/
+.cache/
