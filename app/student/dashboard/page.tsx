@@ -1,153 +1,145 @@
+"use client";
+
 import { useState } from "react";
 
 export default function StudentDashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-slate-50">
       {/* Sidebar */}
       <aside 
-        className={`fixed top-0 left-0 h-full w-64 bg-white border-r border-gray-200 
+        className={`fixed top-0 left-0 h-full w-64 bg-slate-950 text-white border-r border-slate-800 
                    transition-all duration-300 ${sidebarCollapsed ? '-translate-x-full' : ''} 
                    z-50`}
       >
-        <div className="flex h-16 items-center justify-between px-4 border-b border-gray-200">
-          <div className="flex items-center space-x-3">
-            <button 
-              onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-              className="p-2 rounded hover:bg-gray-100"
-            >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
-              </svg>
-            </button>
-            <h2 className="text-xl font-semibold text-gray-900">Student Dashboard</h2>
+        <div className="flex h-16 items-center justify-between px-5 border-b border-white/10">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 ring-1 ring-white/10 text-lg font-semibold text-sky-300">
+              S
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-white">Student Portal</p>
+              <p className="text-xs text-slate-400">Learning Dashboard</p>
+            </div>
           </div>
-          <div className="flex items-center space-x-3">
-            <img 
-              src="/placeholder-avatar.jpg" 
-              alt="Profile" 
-              className="h-8 w-8 rounded-full"
-            />
-            <span className="text-sm font-medium text-gray-600">Student Name</span>
-          </div>
+          <button
+            onClick={() => setSidebarCollapsed(true)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 hover:bg-slate-800"
+            aria-label="Close sidebar"
+          >
+            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M6 6l8 8M6 14L14 6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </button>
         </div>
         
-        <nav className="mt-6 space-y-1">
+        <nav className="space-y-1 p-4">
           <a 
             href="/student/dashboard" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M3 11.5L12 4l9 7.5V20a1 1 0 01-1 1h-5v-5H9v5H4a1 1 0 01-1-1v-8.5z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Dashboard</span>}
           </a>
           
           <a 
             href="/student/schedule" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 002-2V6a2 2 0 00-2-2H4z" clipRule="evenodd" />
-              <path fillRule="evenodd" d="M14 8a2 2 0 012-2v4a2 2 0 01-2 2V8z" clipRule="evenodd" />
-              <path fillRule="evenodd" d="M4 12a2 2 0 00-2 2v4a2 2 0 002 2v-4a2 2 0 00-2-2zm10 0a2 2 0 012-2v4a2 2 0 01-2 2v-4z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M16 2v4M8 2v4M3 10h18" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Schedule</span>}
           </a>
           
           <a 
             href="/student/exam-board" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Exam Board</span>}
           </a>
           
           <a 
             href="/student/enrolled-units" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Enrolled Units</span>}
           </a>
           
           <a 
             href="/student/resources" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 001 1v3a1 1 0 001 1H3a1 1 0 01-1-1V3a1 1 0 011-1h1a1 1 0 001-1V2z" clipRule="evenodd" />
-              <path fillRule="evenodd" d="M6 8a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 001 1v3a1 1 0 001 1H3a1 1 0 01-1-1V9a1 1 0 011-1h1a1 1 0 001-1V8z" clipRule="evenodd" />
-              <path fillRule="evenodd" d="M6 14a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 001 1v3a1 1 0 001 1H3a1 1 0 01-1-1V9a1 1 0 011-1h1a1 1 0 001-1V8z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 19.5A2.5 2.5 0 016.5 17H20" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M4 4.5A2.5 2.5 0 016.5 7H20v13" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M8 7v13" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Resources</span>}
           </a>
           
           <a 
             href="/student/grade-report" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M4 19h16" strokeLinecap="round" />
+                <path d="M7 15v4M12 11v8M17 7v12" strokeLinecap="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Grade Report</span>}
           </a>
           
           <a 
             href="/student/attendance" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M9 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Attendance</span>}
           </a>
           
           <a 
             href="/student/mock-registration" 
-            className={`flex items-center px-4 py-2 text-sm font-medium 
-                      ${sidebarCollapsed ? 'justify-center' : 'justify-start'} 
-                      rounded-md hover:bg-gray-100 
-                      ${sidebarCollapsed ? 'px-2' : ''}`}
+            className="group flex items-center gap-3 rounded-3xl px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-slate-800 hover:text-white"
           >
-            <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-            </svg>
+            <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-slate-900 text-slate-300 transition group-hover:bg-slate-800">
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </span>
             {!sidebarCollapsed && <span>Mock Registration</span>}
           </a>
         </nav>
         
-        <div className="mt-auto pb-4">
-          <a 
-            href="/api/auth/signout" 
-            className="block w-full text-center px-4 py-2 text-sm font-medium 
-                    rounded-md bg-red-50 hover:bg-red-100 text-red-600"
+        <div className="mt-auto p-4">
+          <a
+            href="/api/auth/signout"
+            className="flex items-center justify-center rounded-3xl bg-red-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
           >
             Sign Out
           </a>
@@ -155,39 +147,31 @@ export default function StudentDashboard() {
       </aside>
       
       {/* Main Content */}
-      <main className={`flex-1 pl-64 ${sidebarCollapsed ? 'pl-0' : ''} 
+      <main className={`flex-1 ${sidebarCollapsed ? 'pl-0' : 'pl-64'} 
                       transition-all duration-300 overflow-y-auto p-6`}>
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">Dashboard</h1>
-          <div className="flex items-center space-x-4">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900">Welcome back, Student!</h1>
+            <p className="text-sm text-slate-500">Here's your personalized dashboard to track your learning progress.</p>
+          </div>
+          <div className="flex items-center gap-3">
             <button 
-              className="p-2 rounded hover:bg-gray-100"
+              className="p-2 rounded-xl bg-white border border-slate-200 shadow-sm hover:bg-slate-100 transition"
+              aria-label="Notifications"
             >
-              <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zm-1 4a1 1 0 10-2 0 1 1 0 002 0zm8-6a1 1 0 11-2 0 1 1 0 012 0zm0 4a1 1 0 10-2 0 1 1 0 002 0z" clipRule="evenodd" />
+              <svg className="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zm0 16a2 2 0 002-2H8a2 2 0 002 2z" clipRule="evenodd" />
               </svg>
             </button>
-            <div className="relative">
-              <div className="absolute -top-2 -right-2 w-2 h-2 bg-red-500 rounded-full" />
-              <button 
-                className="p-2 rounded hover:bg-gray-100"
-              >
-                <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm.5-7.5a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H5a1 1 0 010-2h5v-5a1 1 0 011-0z" clipRule="evenodd" />
-                </svg>
-              </button>
-            </div>
+            <button 
+              className="p-2 rounded-xl bg-white border border-slate-200 shadow-sm hover:bg-slate-100 transition"
+              aria-label="Help"
+            >
+              <svg className="h-5 w-5 text-slate-700" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7.25-2.5a1.75 1.75 0 10-3.5 0c0 .689.42 1.25 1 1.515V11a.75.75 0 001.5 0V9.015c.58-.265 1-.826 1-1.515zM10 13.5a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
+              </svg>
+            </button>
           </div>
-        </div>
-        
-        {/* Welcome Message */}
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            Welcome back, <span className="text-primary">Student Name</span>!
-          </h2>
-          <p className="text-gray-600">
-            Here's your personalized dashboard to track your learning progress.
-          </p>
         </div>
         
         {/* Stats Cards */}
@@ -195,11 +179,11 @@ export default function StudentDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Enrolled Units</h3>
-                <p className="text-2xl font-bold text-gray-900">4</p>
+                <h3 className="text-sm font-medium text-slate-500">Enrolled Units</h3>
+                <p className="text-2xl font-bold text-slate-900">4</p>
               </div>
-              <div className="bg-blue-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -209,11 +193,11 @@ export default function StudentDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Homework Completed</h3>
-                <p className="text-2xl font-bold text-gray-900">85%</p>
+                <h3 className="text-sm font-medium text-slate-500">Homework Completed</h3>
+                <p className="text-2xl font-bold text-slate-900">85%</p>
               </div>
-              <div className="bg-green-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -223,11 +207,11 @@ export default function StudentDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Attendance Rate</h3>
-                <p className="text-2xl font-bold text-gray-900">92%</p>
+                <h3 className="text-sm font-medium text-slate-500">Attendance Rate</h3>
+                <p className="text-2xl font-bold text-slate-900">92%</p>
               </div>
-              <div className="bg-purple-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -237,11 +221,11 @@ export default function StudentDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Payment Status</h3>
-                <p className="text-2xl font-bold text-gray-900">Up to Date</p>
+                <h3 className="text-sm font-medium text-slate-500">Payment Status</h3>
+                <p className="text-2xl font-bold text-slate-900">Up to Date</p>
               </div>
-              <div className="bg-orange-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-orange-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -250,59 +234,59 @@ export default function StudentDashboard() {
         </div>
         
         {/* Recent Activity */}
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-          <div className="space-y-4">
-            <div className="flex items-center p-3 border-b border-gray-200">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded flex items-center justify-center">
-                <svg className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+        <div className="bg-white rounded-lg shadow p-6">
+          <h3 className="text-lg font-semibold text-slate-900 mb-4\">Recent Activity</h3>
+          <div className="space-y-3">
+            <div className="flex items-center gap-3 p-4 border-b border-slate-100">
+              <div className="flex-shrink-0 w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
-              <div className="flex-1 ml-3">
-                <p className="text-sm font-medium text-gray-900">Completed Physics homework</p>
-                <p className="text-xs text-gray-500">Today, 2:30 PM</p>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-slate-900">Completed Physics homework</p>
+                <p className="text-xs text-slate-500">Today, 2:30 PM</p>
               </div>
-              <span className="text-xs text-green-500">+10 points</span>
+              <span className="text-xs font-semibold text-green-600">+10 points</span>
             </div>
             
-            <div className="flex items-center p-3 border-b border-gray-200">
-              <div className="flex-shrink-0 w-10 h-10 bg-green-100 rounded flex items-center justify-center">
-                <svg className="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+            <div className="flex items-center gap-3 p-4 border-b border-slate-100">
+              <div className="flex-shrink-0 w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
-              <div className="flex-1 ml-3">
-                <p className="text-sm font-medium text-gray-900">Attended Math class</p>
-                <p className="text-xs text-gray-500">Today, 10:00 AM</p>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-slate-900">Attended Math class</p>
+                <p className="text-xs text-slate-500">Today, 10:00 AM</p>
               </div>
-              <span className="text-xs text-green-500">Present</span>
+              <span className="text-xs font-semibold text-green-600">Present</span>
             </div>
             
-            <div className="flex items-center p-3 border-b border-gray-200">
-              <div className="flex-shrink-0 w-10 h-10 bg-purple-100 rounded flex items-center justify-center">
-                <svg className="h-5 w-5 text-purple-600" viewBox="0 0 20 20" fill="currentColor">
+            <div className="flex items-center gap-3 p-4 border-b border-slate-100">
+              <div className="flex-shrink-0 w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
-              <div className="flex-1 ml-3">
-                <p className="text-sm font-medium text-gray-900">Submitted Physics assignment</p>
-                <p className="text-xs text-gray-500">Yesterday, 4:15 PM</p>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-slate-900">Submitted Physics assignment</p>
+                <p className="text-xs text-slate-500">Yesterday, 4:15 PM</p>
               </div>
-              <span className="text-xs text-blue-500">Grade: A</span>
+              <span className="text-xs font-semibold text-sky-600">Grade: A</span>
             </div>
             
-            <div className="flex items-center p-3">
-              <div className="flex-shrink-0 w-10 h-10 bg-orange-100 rounded flex items-center justify-center">
-                <svg className="h-5 w-5 text-orange-600" viewBox="0 0 20 20" fill="currentColor">
+            <div className="flex items-center gap-3 p-4">
+              <div className="flex-shrink-0 w-10 h-10 bg-sky-50 rounded-lg flex items-center justify-center">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
-              <div className="flex-1 ml-3">
-                <p className="text-sm font-medium text-gray-900">Upcoming Math test</p>
-                <p className="text-xs text-gray-500">June 5, 2026</p>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-slate-900">Upcoming Math test</p>
+                <p className="text-xs text-slate-500">June 5, 2026</p>
               </div>
-              <span className="text-xs text-yellow-500">Study materials available</span>
+              <span className="text-xs font-semibold text-sky-600">Study materials available</span>
             </div>
           </div>
         </div>

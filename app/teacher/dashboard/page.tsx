@@ -107,7 +107,7 @@ export default function TeacherDashboard() {
         <div className="mt-auto p-4">
           <a
             href="/api/auth/signout"
-            className="flex items-center justify-center rounded-3xl bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-300 transition hover:bg-red-500/20"
+            className="flex items-center justify-center rounded-3xl bg-red-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-red-700"
           >
             Sign Out
           </a>
@@ -115,7 +115,7 @@ export default function TeacherDashboard() {
       </aside>
       
       {/* Main Content */}
-      <main className={`flex-1 ${sidebarCollapsed ? 'pl-0' : 'pl-64'} 
+      <main className={`flex-1 ${sidebarCollapsed ? 'pl-0' : 'pl-72'} 
                       transition-all duration-300 overflow-y-auto p-6`}>
         <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between mb-6">
           <div className="flex items-center gap-3">
@@ -158,11 +158,11 @@ export default function TeacherDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Active Courses</h3>
-                <p className="text-2xl font-bold text-gray-900">12</p>
+                <h3 className="text-sm font-medium text-slate-500">Active Courses</h3>
+                <p className="text-2xl font-bold text-slate-900">12</p>
               </div>
-              <div className="bg-blue-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -172,11 +172,11 @@ export default function TeacherDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Classes Today</h3>
-                <p className="text-2xl font-bold text-gray-900">5</p>
+                <h3 className="text-sm font-medium text-slate-500">Classes Today</h3>
+                <p className="text-2xl font-bold text-slate-900">5</p>
               </div>
-              <div className="bg-green-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -186,11 +186,11 @@ export default function TeacherDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Total Students</h3>
-                <p className="text-2xl font-bold text-gray-900">156</p>
+                <h3 className="text-sm font-medium text-slate-500">Total Students</h3>
+                <p className="text-2xl font-bold text-slate-900">156</p>
               </div>
-              <div className="bg-purple-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -200,11 +200,11 @@ export default function TeacherDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-sm font-medium text-gray-500">Upcoming Exams</h3>
-                <p className="text-2xl font-bold text-gray-900">3</p>
+                <h3 className="text-sm font-medium text-slate-500">Upcoming Exams</h3>
+                <p className="text-2xl font-bold text-slate-900">3</p>
               </div>
-              <div className="bg-orange-50 p-3 rounded-full">
-                <svg className="h-5 w-5 text-orange-500" viewBox="0 0 20 20" fill="currentColor">
+              <div className="bg-sky-50 p-3 rounded-full">
+                <svg className="h-5 w-5 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
                 </svg>
               </div>
@@ -235,9 +235,9 @@ export default function TeacherDashboard() {
           <div className="bg-white rounded-lg shadow p-4">
             <h3 className="text-sm font-medium text-gray-500 mb-2">Today's Schedule</h3>
             <div className="space-y-3">
-              <div className="flex items-center p-3 bg-gray-50 rounded">
-                <div className="flex-shrink-0 h-8 w-8 bg-blue-100 rounded flex items-center justify-center">
-                  <svg className="h-4 w-4 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+              <div className="flex items-center p-3 bg-slate-50 rounded">
+                <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                  <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M9 12l2-2 4 4H7z" />
                   </svg>
                 </div>
@@ -246,9 +246,9 @@ export default function TeacherDashboard() {
                   <p className="text-xs text-gray-500">9:00 AM - 10:30 AM</p>
                 </div>
               </div>
-              <div className="flex items-center p-3 bg-gray-50 rounded">
-                <div className="flex-shrink-0 h-8 w-8 bg-green-100 rounded flex items-center justify-center">
-                  <svg className="h-4 w-4 text-green-600" viewBox="0 0 20 20" fill="currentColor">
+              <div className="flex items-center p-3 bg-slate-50 rounded">
+                <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                  <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M9 12l2-2 4 4H7z" />
                   </svg>
                 </div>
@@ -257,9 +257,9 @@ export default function TeacherDashboard() {
                   <p className="text-xs text-gray-500">11:00 AM - 12:30 PM</p>
                 </div>
               </div>
-              <div className="flex items-center p-3 bg-gray-50 rounded">
-                <div className="flex-shrink-0 h-8 w-8 bg-purple-100 rounded flex items-center justify-center">
-                  <svg className="h-4 w-4 text-purple-600" viewBox="0 0 20 20" fill="currentColor">
+              <div className="flex items-center p-3 bg-slate-50 rounded">
+                <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                  <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M9 12l2-2 4 4H7z" />
                   </svg>
                 </div>
@@ -272,11 +272,11 @@ export default function TeacherDashboard() {
           </div>
           
           <div className="bg-white rounded-lg shadow p-4">
-            <h3 className="text-sm font-medium text-gray-500 mb-2">Upcoming Exams & Mocks</h3>
+            <h3 className="text-sm font-medium text-slate-500 mb-2">Upcoming Exams & Mocks</h3>
             <div className="space-y-3">
-              <div className="flex items-center p-3 bg-gray-50 rounded">
-                <div className="flex-shrink-0 h-8 w-8 bg-red-100 rounded flex items-center justify-center">
-                  <svg className="h-4 w-4 text-red-600" viewBox="0 0 20 20" fill="currentColor">
+              <div className="flex items-center p-3 bg-slate-50 rounded">
+                <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                  <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M9 12l2-2 4 4H7z" />
                   </svg>
                 </div>
@@ -285,9 +285,9 @@ export default function TeacherDashboard() {
                   <p className="text-xs text-gray-500">May 30, 2026</p>
                 </div>
               </div>
-              <div className="flex items-center p-3 bg-gray-50 rounded">
-                <div className="flex-shrink-0 h-8 w-8 bg-yellow-100 rounded flex items-center justify-center">
-                  <svg className="h-4 w-4 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
+              <div className="flex items-center p-3 bg-slate-50 rounded">
+                <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                  <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                     <path d="M9 12l2-2 4 4H7z" />
                   </svg>
                 </div>
@@ -320,19 +320,19 @@ export default function TeacherDashboard() {
                 <div className="flex space-x-2">
                   <button 
                     className="px-3 py-1 text-sm font-medium rounded 
-                            bg-blue-50 hover:bg-blue-100 text-blue-800"
+                            bg-sky-50 hover:bg-sky-100 text-sky-700"
                   >
                     Week
                   </button>
                   <button 
                     className="px-3 py-1 text-sm font-medium rounded 
-                            bg-blue-50 hover:bg-blue-100 text-blue-800"
+                            bg-sky-50 hover:bg-sky-100 text-sky-700"
                   >
                     Month
                   </button>
                   <button 
                     className="px-3 py-1 text-sm font-medium rounded 
-                            bg-blue-50 hover:bg-blue-100 text-blue-800"
+                            bg-sky-50 hover:bg-sky-100 text-sky-700"
                   >
                     Year
                   </button>
@@ -352,8 +352,8 @@ export default function TeacherDashboard() {
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Urgent Tasks</h3>
               <div className="space-y-3">
                 <div className="flex items-center p-3 bg-gray-50 rounded">
-                  <div className="flex-shrink-0 h-8 w-8 bg-yellow-100 rounded flex items-center justify-center">
-                    <svg className="h-4 w-4 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
+                  <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                    <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 12l2-2 4 4H7z" />
                     </svg>
                   </div>
@@ -362,15 +362,15 @@ export default function TeacherDashboard() {
                     <button 
                       onClick={() => {}}
                       className="mt-2 px-2 py-1 text-xs font-medium rounded 
-                              bg-blue-50 hover:bg-blue-100 text-blue-800"
+                              bg-sky-50 hover:bg-sky-100 text-sky-700"
                     >
                       Mark as Done
                     </button>
                   </div>
                 </div>
                 <div className="flex items-center p-3 bg-gray-50 rounded">
-                  <div className="flex-shrink-0 h-8 w-8 bg-yellow-100 rounded flex items-center justify-center">
-                    <svg className="h-4 w-4 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
+                  <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                    <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 12l2-2 4 4H7z" />
                     </svg>
                   </div>
@@ -379,15 +379,15 @@ export default function TeacherDashboard() {
                     <button 
                       onClick={() => {}}
                       className="mt-2 px-2 py-1 text-xs font-medium rounded 
-                              bg-blue-50 hover:bg-blue-100 text-blue-800"
+                              bg-sky-50 hover:bg-sky-100 text-sky-700"
                     >
                       Mark as Done
                     </button>
                   </div>
                 </div>
                 <div className="flex items-center p-3 bg-gray-50 rounded">
-                  <div className="flex-shrink-0 h-8 w-8 bg-yellow-100 rounded flex items-center justify-center">
-                    <svg className="h-4 w-4 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
+                  <div className="flex-shrink-0 h-8 w-8 bg-sky-50 rounded flex items-center justify-center">
+                    <svg className="h-4 w-4 text-sky-600" viewBox="0 0 20 20" fill="currentColor">
                       <path d="M9 12l2-2 4 4H7z" />
                     </svg>
                   </div>
@@ -396,7 +396,7 @@ export default function TeacherDashboard() {
                     <button 
                       onClick={() => {}}
                       className="mt-2 px-2 py-1 text-xs font-medium rounded 
-                              bg-blue-50 hover:bg-blue-100 text-blue-800"
+                              bg-sky-50 hover:bg-sky-100 text-sky-700"
                     >
                       Mark as Done
                     </button>
