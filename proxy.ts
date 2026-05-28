@@ -1,7 +1,11 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function middleware(request: NextRequest) {
+/**
+ * Proxy configuration for role-based access control
+ * Replaces the deprecated middleware.ts convention in Next.js 16+
+ */
+export async function proxy(request: NextRequest) {
   const token = await getToken({
     req: request,
     secret: process.env.NEXTAUTH_SECRET,
@@ -29,22 +33,18 @@ export async function middleware(request: NextRequest) {
 
   // Protected routes require authentication
   if (!token) {
-    // Redirect to login for page routes
     if (request.nextUrl.pathname.startsWith("/api")) {
       return NextResponse.json(
         { error: "Unauthorized - Please sign in" },
         { status: 401 }
       );
     }
-
-    // Redirect to login page
     return NextResponse.redirect(new URL("/login", request.url));
   }
 
   // Role-based access control
   const pathname = request.nextUrl.pathname;
 
-  // Teacher-only routes
   if (pathname.startsWith("/teacher")) {
     if ((token as any).role !== "TEACHER") {
       return NextResponse.json(
@@ -54,7 +54,6 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Student-only routes
   if (pathname.startsWith("/student")) {
     if ((token as any).role !== "STUDENT") {
       return NextResponse.json(
@@ -64,7 +63,6 @@ export async function middleware(request: NextRequest) {
     }
   }
 
-  // Admin-only routes
   if (pathname.startsWith("/admin")) {
     if ((token as any).role !== "ADMIN") {
       return NextResponse.json(
@@ -77,7 +75,6 @@ export async function middleware(request: NextRequest) {
   return NextResponse.next();
 }
 
-// Configure which routes to run middleware on
 export const config = {
   matcher: [
     "/((?!_next/static|_next/image|favicon.ico).*)",

@@ -22,7 +22,7 @@ export default function Home() {
               Teacher Portal
             </div>
             <div className="flex items-center gap-2 text-sm text-blue-100">
-              <span classNameP="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span className="w-2 h-2 bg-yellow-400 rounded-full"></span>
               Student Portal
             </div>
           </div>
