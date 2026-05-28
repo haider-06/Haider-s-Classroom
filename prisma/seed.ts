@@ -1,16 +1,17 @@
 import { prisma } from "../lib/prisma";
 import { User, StudentProfile, TeacherProfile } from "../generated/prisma";
+import { hashPassword } from "../lib/auth-utils";
 
 async function main() {
   console.log("Seeding database...");
 
   const teacher = await prisma.user.upsert({
-    where: { email: "haider@classroom.com" },
+    where: { email: "smirhaiderali@gmail.com" },
     update: {},
     create: {
-      email: "haider@classroom.com",
-      name: "Professor Haider",
-      password: "hashed_password_123",
+      email: "smirhaiderali@gmail.com",
+      name: "haider-06",
+      password: await hashPassword("HC2026!!"),
       role: "TEACHER",
     },
   });
@@ -31,7 +32,7 @@ async function main() {
     create: {
       email: "student@classroom.com",
       name: "John Doe",
-      password: "hashed_password_456",
+      password: await hashPassword("hashed_password_456"),
       role: "STUDENT",
     },
   });
