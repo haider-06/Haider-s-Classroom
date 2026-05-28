@@ -1,6 +1,6 @@
-import { prisma } from "../lib/prisma";
-import { User, StudentProfile, TeacherProfile } from "../generated/prisma";
-import { hashPassword } from "../lib/auth-utils";
+import { prisma } from "../lib/prisma.js";
+import { User, StudentProfile, TeacherProfile } from "../generated/prisma/index.js";
+import { hashPassword } from "../lib/auth-utils.js";
 
 async function main() {
   console.log("Seeding database...");
