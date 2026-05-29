@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function ExamBoard() {
@@ -87,7 +88,7 @@ export default function ExamBoard() {
   );
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Exam Board</h1>
         <div className="flex items-center gap-4">
@@ -96,7 +97,7 @@ export default function ExamBoard() {
             <select
               value={examType}
               onChange={(e) => setExamType(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               <option value="all">All Types</option>
               <option value="midterm">Midterm</option>
@@ -111,7 +112,7 @@ export default function ExamBoard() {
             <select
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               <option value="all">All Subjects</option>
               <option value="physics">Physics</option>
@@ -123,7 +124,7 @@ export default function ExamBoard() {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Upcoming Exams */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Upcoming Exams</h2>
             <span className="text-sm text-gray-500">{filteredExams.filter(e => e.status === "Upcoming").length} exams</span>
@@ -131,7 +132,7 @@ export default function ExamBoard() {
           
           <div className="space-y-4">
             {filteredExams.filter(exam => exam.status === "Upcoming").map(exam => (
-              <div key={exam.id} className="border border-gray-200 rounded-lg p-4">
+              <div key={exam.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h3 className="font-semibold text-gray-900">{exam.title}</h3>
@@ -183,7 +184,7 @@ export default function ExamBoard() {
                 <div className="flex items-center justify-end">
                   <button 
                     onClick={() => {}}
-                    className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                    className="px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                   >
                     View Details
                   </button>
@@ -200,7 +201,7 @@ export default function ExamBoard() {
         </div>
         
         {/* Completed Exams */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Completed Exams</h2>
             <span className="text-sm text-gray-500">{filteredExams.filter(e => e.status === "Completed").length} exams</span>
@@ -208,7 +209,7 @@ export default function ExamBoard() {
           
           <div className="space-y-4">
             {filteredExams.filter(exam => exam.status === "Completed").map(exam => (
-              <div key={exam.id} className="border border-gray-200 rounded-lg p-4">
+              <div key={exam.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h3 className="font-semibold text-gray-900">{exam.title}</h3>
@@ -264,7 +265,7 @@ export default function ExamBoard() {
                 <div className="flex items-center justify-end">
                   <button 
                     onClick={() => {}}
-                    className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                    className="px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                   >
                     View Results
                   </button>
@@ -282,21 +283,21 @@ export default function ExamBoard() {
       </div>
       
       {/* Exam Statistics */}
-      <div className="bg-white rounded-lg shadow p-6 mt-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Exam Performance</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <h3 className="text-sm font-medium text-gray-500">Average Score</h3>
             <p className="text-2xl font-bold text-gray-900">81.5%</p>
           </div>
           
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <h3 className="text-sm font-medium text-gray-500">Pass Rate</h3>
             <p className="text-2xl font-bold text-gray-900">75%</p>
           </div>
           
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <h3 className="text-sm font-medium text-gray-500">Exams Taken</h3>
             <p className="text-2xl font-bold text-gray-900">4</p>
           </div>
@@ -304,8 +305,7 @@ export default function ExamBoard() {
         
         <div className="mt-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-3">Score Trend</h3>
-          <div className="h-48 bg-gray-50 rounded">
-            {/* Line chart would go here */}
+          <div className="h-48 bg-gray-50 rounded-lg border border-gray-100">
             <div className="flex h-full items-center justify-center text-gray-400">
               Score Trend Chart
             </div>

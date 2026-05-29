@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function TeacherResources() {
@@ -99,12 +100,12 @@ export default function TeacherResources() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Resources</h1>
         <button 
           onClick={() => {}}
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+          className="flex items-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
         >
           <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -115,7 +116,7 @@ export default function TeacherResources() {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Upload Panel */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Upload Resource</h2>
           </div>
@@ -126,7 +127,7 @@ export default function TeacherResources() {
               <select
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 disabled={uploading}
               >
                 <option value="">Select Subject</option>
@@ -143,7 +144,7 @@ export default function TeacherResources() {
               <select
                 value={selectedUnit}
                 onChange={(e) => setSelectedUnit(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 disabled={!selectedSubject || uploading}
               >
                 <option value="">Select Unit</option>
@@ -200,7 +201,7 @@ export default function TeacherResources() {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Enter resource title"
                 disabled={uploading}
               />
@@ -211,7 +212,7 @@ export default function TeacherResources() {
               <textarea
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 rows={3}
                 placeholder="Enter description"
                 disabled={uploading}
@@ -224,7 +225,7 @@ export default function TeacherResources() {
                 type="text"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Enter URL or file path"
                 disabled={uploading}
               />
@@ -233,7 +234,7 @@ export default function TeacherResources() {
             <button
               type="submit"
               disabled={uploading || !title || !url || !selectedSubject || !selectedUnit}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
             >
               {uploading ? (
                 <>
@@ -253,7 +254,7 @@ export default function TeacherResources() {
         </div>
         
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Filter Resources</h2>
           </div>
@@ -296,7 +297,7 @@ export default function TeacherResources() {
               <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
               <input
                 type="text"
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Search by title..."
               />
             </div>
@@ -304,7 +305,7 @@ export default function TeacherResources() {
         </div>
         
         {/* Resources List */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Resources Library</h2>
             <span className="text-sm text-gray-500">{filteredResources.length} resources</span>
@@ -312,10 +313,10 @@ export default function TeacherResources() {
           
           <div className="space-y-3">
             {filteredResources.map(resource => (
-              <div key={resource.id} className="flex items-center p-3 border-b border-gray-200">
+              <div key={resource.id} className="flex items-center p-3 border-b border-gray-100 hover:bg-gray-50 transition-colors">
                 <div className="flex-shrink-0 w-10 h-10">
                   {resource.type === "PDF" && (
-                    <div className="bg-blue-100 rounded flex items-center justify-center">
+                    <div className="bg-blue-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1h1a1 1 0 001-1V2z" clipRule="evenodd" />
                         <path fillRule="evenodd" d="M6 8a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V9a1 1 0 011-1h1a1 1 0 001-1V8z" clipRule="evenodd" />
@@ -324,14 +325,14 @@ export default function TeacherResources() {
                     </div>
                   )}
                   {resource.type === "VIDEO" && (
-                    <div className="bg-red-100 rounded flex items-center justify-center">
+                    <div className="bg-red-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-red-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 2v4a1 1 0 002 2V6a1 1 0 011-1h3a1 1 0 011 1v2a1 1 0 00-2-2zM6.75 7.5a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0v-3z" clipRule="evenodd" />
                       </svg>
                     </div>
                   )}
                   {resource.type === "LINK" && (
-                    <div className="bg-green-100 rounded flex items-center justify-center">
+                    <div className="bg-green-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M5 3a2 2 0 012 2v1a2 2 0 01-2 2h2a2 2 0 012 2v2a2 2 0 01-2 2H7a2 2 0 01-2-2V5a2 2 0 002-2h2zm2 8a2 2 0 01-2 2H5a2 2 0 002 2v2h2a2 2 0 002-2v-2zM9 3a1 1 0 012 2v2a1 1 0 01-2 2V3z" clipRule="evenodd" />
                       </svg>
@@ -352,13 +353,13 @@ export default function TeacherResources() {
                 <div className="flex-shrink-0 ml-4">
                   <button 
                     onClick={() => {}}
-                    className="text-sm text-gray-500 hover:text-gray-700"
+                    className="text-sm text-primary hover:text-primary/80 font-medium"
                   >
                     Download/View
                   </button>
-                  <button 
+                   <button 
                     onClick={() => {}}
-                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+                    className="ml-2 text-sm text-gray-500 hover:text-red-600 font-medium"
                   >
                     Delete
                   </button>

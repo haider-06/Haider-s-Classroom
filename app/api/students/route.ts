@@ -109,16 +109,4 @@ export async function POST(request: NextRequest) {
     console.error("Error creating student:", error);
     return errorResponse("Failed to create student profile", 500);
   }
-    const student = await prisma.studentProfile.create({
-      data: {
-        userId: user.id,
-        studentId,
-        phone,
-      },
-    });
-
-    return NextResponse.json(student, { status: 201 });
-  } catch (error) {
-    return NextResponse.json({ error: "Failed to create student" }, { status: 500 });
-  }
 }

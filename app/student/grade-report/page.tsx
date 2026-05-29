@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function GradeReport() {
@@ -126,37 +127,36 @@ export default function GradeReport() {
   const overallAverage = Math.round((examAverage + assignmentAverage) / 2);
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Grade Report</h1>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <label className="text-sm font-medium text-gray-700">Report Type:</label>
             <div className="flex space-x-1">
+              <div className="flex space-x-1 bg-gray-100 p-0.5 rounded-lg">
               <button 
                 onClick={() => setReportType("exams")}
-                className={`px-3 py-1 text-sm font-medium rounded 
-                        ${reportType === "exams" ? "bg-primary text-primary-foreground" : "bg-gray-200 text-gray-600"}
-                        hover:bg-primary/10 hover:text-primary`}
+                className={`px-3 py-1.5 text-sm font-semibold rounded-lg transition-all
+                        ${reportType === "exams" ? "bg-white text-primary shadow-sm" : "text-gray-600 hover:text-gray-800"}`}
               >
                 Exams
               </button>
               <button 
                 onClick={() => setReportType("assignments")}
-                className={`px-3 py-1 text-sm font-medium rounded 
-                        ${reportType === "assignments" ? "bg-primary text-primary-foreground" : "bg-gray-200 text-gray-600"}
-                        hover:bg-primary/10 hover:text-primary`}
+                className={`px-3 py-1.5 text-sm font-semibold rounded-lg transition-all
+                        ${reportType === "assignments" ? "bg-white text-primary shadow-sm" : "text-gray-600 hover:text-gray-800"}`}
               >
                 Assignments
               </button>
               <button 
                 onClick={() => setReportType("all")}
-                className={`px-3 py-1 text-sm font-medium rounded 
-                        ${reportType === "all" ? "bg-primary text-primary-foreground" : "bg-gray-200 text-gray-600"}
-                        hover:bg-primary/10 hover:text-primary`}
+                className={`px-3 py-1.5 text-sm font-semibold rounded-lg transition-all
+                        ${reportType === "all" ? "bg-white text-primary shadow-sm" : "text-gray-600 hover:text-gray-800"}`}
               >
                 All
               </button>
+              </div>
             </div>
           </div>
           
@@ -165,7 +165,7 @@ export default function GradeReport() {
             <select
               value={timePeriod}
               onChange={(e) => setTimePeriod(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               <option value="all">All Time</option>
               <option value="3months">Last 3 Months</option>
@@ -179,7 +179,7 @@ export default function GradeReport() {
             <select
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               <option value="all">All Subjects</option>
               <option value="physics">Physics</option>
@@ -191,42 +191,42 @@ export default function GradeReport() {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
         {/* Summary Cards */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Exam Average</h3>
               <p className="text-2xl font-bold text-gray-900">{examAverage}%</p>
             </div>
-            <div className="bg-blue-50 p-3 rounded-full">
-              <svg className="h-5 w-5 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
               </svg>
             </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Assignment Average</h3>
               <p className="text-2xl font-bold text-gray-900">{assignmentAverage}%</p>
             </div>
-            <div className="bg-green-50 p-3 rounded-full">
-              <svg className="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
               </svg>
             </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Overall Average</h3>
               <p className="text-2xl font-bold text-gray-900">{overallAverage}%</p>
             </div>
-            <div className="bg-purple-50 p-3 rounded-full">
-              <svg className="h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
               </svg>
             </div>
@@ -236,7 +236,7 @@ export default function GradeReport() {
       
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Exams Section */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Exam Results</h2>
             <span className="text-sm text-gray-500">{filteredExams.length} exams</span>
@@ -244,7 +244,7 @@ export default function GradeReport() {
           
           <div className="space-y-4">
             {filteredExams.map(exam => (
-              <div key={exam.id} className="border border-gray-200 rounded-lg p-4">
+              <div key={exam.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h3 className="font-semibold text-gray-900">{exam.title}</h3>
@@ -294,7 +294,7 @@ export default function GradeReport() {
                 <div className="flex items-center justify-end">
                   <button 
                     onClick={() => {}}
-                    className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                    className="px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                   >
                     View Details
                   </button>
@@ -311,7 +311,7 @@ export default function GradeReport() {
         </div>
         
         {/* Assignments Section */}
-        <div className="bg-white rounded-lg shadow p-6">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Assignment Results</h2>
             <span className="text-sm text-gray-500">{filteredAssignments.length} assignments</span>
@@ -319,7 +319,7 @@ export default function GradeReport() {
           
           <div className="space-y-4">
             {filteredAssignments.map(assignment => (
-              <div key={assignment.id} className="border border-gray-200 rounded-lg p-4">
+              <div key={assignment.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
                 <div className="flex items-center justify-between mb-3">
                   <div>
                     <h3 className="font-semibold text-gray-900">{assignment.title}</h3>
@@ -331,7 +331,7 @@ export default function GradeReport() {
                               assignment.percentage >= 80 ? "bg-blue-100 text-blue-800" :
                               assignment.percentage >= 70 ? "bg-yellow-100 text-yellow-800" :
                               assignment.percentage >= 60 ? "bg-orange-100 text-orange-800" :
-                              "bg-red-100 text-red-800`}`}>
+                              "bg-red-100 text-red-800"}`}>
                       {assignment.percentage}%
                     </span>
                   </div>
@@ -369,7 +369,7 @@ export default function GradeReport() {
                 <div className="flex items-center justify-end">
                   <button 
                     onClick={() => {}}
-                    className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                    className="px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                   >
                     View Details
                   </button>
@@ -386,21 +386,21 @@ export default function GradeReport() {
         </div>
       </div>
       
-      <div className="bg-white rounded-lg shadow p-6 mt-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Performance Trends</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <h3 className="text-sm font-medium text-gray-500">Pass Rate</h3>
             <p className="text-2xl font-bold text-gray-900">75%</p>
           </div>
           
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <h3 className="text-sm font-medium text-gray-500">Improvement Trend</h3>
             <p className="text-2xl font-bold text-gray-900">+5%</p>
           </div>
           
-          <div className="bg-gray-50 p-4 rounded">
+          <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
             <h3 className="text-sm font-medium text-gray-500">Consistency Score</h3>
             <p className="text-2xl font-bold text-gray-900">82%</p>
           </div>
@@ -408,8 +408,7 @@ export default function GradeReport() {
         
         <div className="mt-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-3">Score Progress</h3>
-          <div className="h-48 bg-gray-50 rounded">
-            {/* Line chart would go here */}
+          <div className="h-48 bg-gray-50 rounded-lg border border-gray-100">
             <div className="flex h-full items-center justify-center text-gray-400">
               Score Progress Chart
             </div>
@@ -417,10 +416,10 @@ export default function GradeReport() {
         </div>
         
         <div className="mt-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-end gap-3">
             <button 
               onClick={() => {}}
-              className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+              className="px-4 py-2.5 rounded-xl border border-gray-200 bg-white text-gray-700 hover:bg-gray-50 font-medium"
             >
               <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -429,7 +428,7 @@ export default function GradeReport() {
             </button>
             <button 
               onClick={() => {}}
-              className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+              className="px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
             >
               <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />

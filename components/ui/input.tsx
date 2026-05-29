@@ -33,14 +33,13 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement>,
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Component = asChild ? "span" : "input"
+  ({ className, variant, size, ...props }, ref) => {
     return (
-      <Component
+      <input
         className={cn(inputVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      )
+      />
     )
   }
 )

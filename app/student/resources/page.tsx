@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function Resources() {
@@ -77,14 +78,14 @@ export default function Resources() {
   );
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Resources</h1>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Filter Resources</h2>
           </div>
@@ -96,7 +97,7 @@ export default function Resources() {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
                 placeholder="Search by title..."
               />
             </div>
@@ -106,7 +107,7 @@ export default function Resources() {
               <select
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
               >
                 <option value="all">All Subjects</option>
                 <option value="physics">Physics</option>
@@ -119,7 +120,7 @@ export default function Resources() {
               <select
                 value={selectedUnit}
                 onChange={(e) => setSelectedUnit(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
               >
                 <option value="all">All Units</option>
                 <option value="Unit 1">Unit 1</option>
@@ -133,35 +134,35 @@ export default function Resources() {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Resource Type</label>
               <div className="space-y-2">
-                <label className="flex items-center">
+                <label className="flex items-center p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     type="radio"
                     value="all"
                     checked={resourceType === "all"}
                     onChange={(e) => setResourceType(e.target.value)}
-                    className="h-4 w-4 text-primary"
+                    className="h-4 w-4 accent-primary"
                   />
-                  <span className="ml-2">All Types</span>
+                  <span className="ml-2 text-sm text-gray-700">All Types</span>
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-center p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     type="radio"
                     value="pdf"
                     checked={resourceType === "pdf"}
                     onChange={(e) => setResourceType(e.target.value)}
-                    className="h-4 w-4 text-primary"
+                    className="h-4 w-4 accent-primary"
                   />
-                  <span className="ml-2">PDF</span>
+                  <span className="ml-2 text-sm text-gray-700">PDF</span>
                 </label>
-                <label className="flex items-center">
+                <label className="flex items-center p-2 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors">
                   <input
                     type="radio"
                     value="video"
                     checked={resourceType === "video"}
                     onChange={(e) => setResourceType(e.target.value)}
-                    className="h-4 w-4 text-primary"
+                    className="h-4 w-4 accent-primary"
                   />
-                  <span className="ml-2">Video</span>
+                  <span className="ml-2 text-sm text-gray-700">Video</span>
                 </label>
               </div>
             </div>
@@ -176,13 +177,13 @@ export default function Resources() {
           </div>
           
           {filteredResources.map(resource => (
-            <div key={resource.id} className="bg-white rounded-lg shadow p-4">
+            <div key={resource.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 w-10 h-10">
                     {resource.type === "PDF" && (
-                      <div className="bg-blue-100 rounded flex items-center justify-center">
-                        <svg className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
+                      <div className="bg-primary/10 rounded-lg flex items-center justify-center">
+                        <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1h1a1 1 0 001-1V2z" clipRule="evenodd" />
                           <path fillRule="evenodd" d="M6 8a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V9a1 1 0 011-1h1a1 1 0 001-1V8z" clipRule="evenodd" />
                           <path fillRule="evenodd" d="M6 14a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1v-1a1 1 0 011-1h1a1 1 0 001-1v-1z" clipRule="evenodd" />
@@ -190,8 +191,8 @@ export default function Resources() {
                       </div>
                     )}
                     {resource.type === "VIDEO" && (
-                      <div className="bg-red-100 rounded flex items-center justify-center">
-                        <svg className="h-5 w-5 text-red-600" viewBox="0 0 20 20" fill="currentColor">
+                      <div className="bg-primary/10 rounded-lg flex items-center justify-center">
+                        <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 2v4a1 1 0 002 2V6a1 1 0 011-1h3a1 1 0 011 1v2a1 1 0 00-2-2zM6.75 7.5a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0v-3z" clipRule="evenodd" />
                         </svg>
                       </div>
@@ -218,14 +219,14 @@ export default function Resources() {
                   </div>
                   <button 
                     onClick={() => {}}
-                    className="px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                    className="px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                   >
                     {resource.type === "PDF" ? "Download" : "Watch"}
                   </button>
                 </div>
               </div>
               
-              <div className="mt-3 pt-3 border-t border-gray-200">
+              <div className="mt-3 pt-3 border-t border-gray-100">
                 <p className="text-xs text-gray-500">Uploaded on {resource.uploadedAt}</p>
               </div>
             </div>

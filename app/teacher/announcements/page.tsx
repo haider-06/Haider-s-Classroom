@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function TeacherAnnouncements() {
@@ -82,12 +83,12 @@ export default function TeacherAnnouncements() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Announcements</h1>
         <button 
           onClick={() => {}}
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+          className="flex items-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
         >
           <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -98,7 +99,7 @@ export default function TeacherAnnouncements() {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Announcement Form */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Create Announcement</h2>
           </div>
@@ -109,7 +110,7 @@ export default function TeacherAnnouncements() {
               <select
                 value={announcementType}
                 onChange={(e) => setAnnouncementType(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 disabled={sending}
               >
                 {announcementTypes.map(type => (
@@ -125,7 +126,7 @@ export default function TeacherAnnouncements() {
               <select
                 value={selectedBatch}
                 onChange={(e) => setSelectedBatch(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 disabled={sending}
               >
                 <option value="">Select Batch (Optional)</option>
@@ -143,7 +144,7 @@ export default function TeacherAnnouncements() {
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Enter announcement title"
                 disabled={sending}
               />
@@ -154,7 +155,7 @@ export default function TeacherAnnouncements() {
               <textarea
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 rows={4}
                 placeholder="Enter announcement content"
                 disabled={sending}
@@ -168,7 +169,7 @@ export default function TeacherAnnouncements() {
                   type="date"
                   value={dueDate}
                   onChange={(e) => setDueDate(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   disabled={sending}
                 />
               </div>
@@ -189,7 +190,7 @@ export default function TeacherAnnouncements() {
             <button
               type="submit"
               disabled={sending || !title || !content}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
             >
               {sending ? (
                 <>
@@ -209,14 +210,14 @@ export default function TeacherAnnouncements() {
         </div>
         
         {/* Templates */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Announcement Templates</h2>
           </div>
           
           <div className="space-y-3">
-            <div className="flex items-center p-3 border-b border-gray-200">
-              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded flex items-center justify-center">
+            <div className="flex items-center p-3 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <div className="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
                 <svg className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1h1a1 1 0 001-1V2z" clipRule="evenodd" />
                   <path fillRule="evenodd" d="M6 8a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V9a1 1 0 011-1h1a1 1 0 001-1V8z" clipRule="evenodd" />
@@ -234,15 +235,15 @@ export default function TeacherAnnouncements() {
                     setTitle("Homework Assignment");
                     setContent("Dear Students, Please find the homework assignment for [Topic/Chapter]. Due date: [Date]. Please submit by the deadline.");
                   }}
-                  className="text-sm text-gray-500 hover:text-gray-700"
+                  className="text-sm text-primary hover:text-primary/80 font-medium"
                 >
                   Use Template
                 </button>
               </div>
             </div>
             
-            <div className="flex items-center p-3 border-b border-gray-200">
-              <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded flex items-center justify-center">
+            <div className="flex items-center p-3 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <div className="flex-shrink-0 w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
                 <svg className="h-5 w-5 text-red-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 2v4a1 1 0 002 2V6a1 1 0 011-1h3a1 1 0 011 1v2a1 1 0 00-2-2zM6.75 7.5a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0v-3z" clipRule="evenodd" />
                 </svg>
@@ -258,15 +259,15 @@ export default function TeacherAnnouncements() {
                     setTitle("Exam Announcement");
                     setContent("Dear Students and Parents, Please be informed that the [Exam Name] will be held on [Date] at [Time]. Syllabus: [Syllabus Details].");
                   }}
-                  className="text-sm text-gray-500 hover:text-gray-700"
+                  className="text-sm text-primary hover:text-primary/80 font-medium"
                 >
                   Use Template
                 </button>
               </div>
             </div>
             
-            <div className="flex items-center p-3 border-b border-gray-200">
-              <div className="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded flex items-center justify-center">
+            <div className="flex items-center p-3 border-b border-gray-100 hover:bg-gray-50 transition-colors">
+              <div className="flex-shrink-0 w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
                 <svg className="h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
                 </svg>
@@ -282,7 +283,7 @@ export default function TeacherAnnouncements() {
                     setTitle("Class Cancellation");
                     setContent("Dear Students, Please note that the [Class Type] scheduled for [Date] at [Time] has been cancelled due to [Reason]. The class will be rescheduled to [New Date].");
                   }}
-                  className="text-sm text-gray-500 hover:text-gray-700"
+                  className="text-sm text-primary hover:text-primary/80 font-medium"
                 >
                   Use Template
                 </button>
@@ -292,7 +293,7 @@ export default function TeacherAnnouncements() {
         </div>
         
         {/* Announcements List */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Announcement History</h2>
             <span className="text-sm text-gray-500">{filteredAnnouncements.length} announcements</span>
@@ -300,10 +301,10 @@ export default function TeacherAnnouncements() {
           
           <div className="space-y-3">
             {filteredAnnouncements.map(announcement => (
-              <div key={announcement.id} className="flex items-center p-3 border-b border-gray-200">
+              <div key={announcement.id} className="flex items-center p-3 border-b border-gray-100 hover:bg-gray-50 transition-colors">
                 <div className="flex-shrink-0 w-10 h-10">
                   {announcement.type === "HOMEWORK" && (
-                    <div className="bg-blue-100 rounded flex items-center justify-center">
+                    <div className="bg-blue-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M6 2a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1h1a1 1 0 001-1V2z" clipRule="evenodd" />
                         <path fillRule="evenodd" d="M6 8a2 2 0 00-2 2v1a1 1 0 001 1h1a1 1 0 011 1v3a1 1 0 01-1 1H3a1 1 0 01-1-1V9a1 1 0 011-1h1a1 1 0 001-1V8z" clipRule="evenodd" />
@@ -312,28 +313,28 @@ export default function TeacherAnnouncements() {
                     </div>
                   )}
                   {announcement.type === "EXAM" && (
-                    <div className="bg-red-100 rounded flex items-center justify-center">
+                    <div className="bg-red-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-red-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 2v4a1 1 0 002 2V6a1 1 0 011-1h3a1 1 0 011 1v2a1 1 0 00-2-2zM6.75 7.5a.75.75 0 011.5 0v3a.75.75 0 01-1.5 0v-3z" clipRule="evenodd" />
                       </svg>
                     </div>
                   )}
                   {announcement.type === "MOCK" && (
-                    <div className="bg-yellow-100 rounded flex items-center justify-center">
+                    <div className="bg-yellow-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
                       </svg>
                     </div>
                   )}
                   {announcement.type === "GENERAL" && (
-                    <div className="bg-purple-100 rounded flex items-center justify-center">
+                    <div className="bg-purple-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-purple-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
                       </svg>
                     </div>
                   )}
                   {announcement.type === "REMINDER" && (
-                    <div className="bg-green-100 rounded flex items-center justify-center">
+                    <div className="bg-green-100 rounded-lg flex items-center justify-center">
                       <svg className="h-5 w-5 text-green-600" viewBox="0 0 20 20" fill="currentColor">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
                       </svg>
@@ -359,13 +360,13 @@ export default function TeacherAnnouncements() {
                 <div className="flex-shrink-0 ml-4">
                   <button 
                     onClick={() => {}}
-                    className="text-sm text-gray-500 hover:text-gray-700"
+                    className="text-sm text-primary hover:text-primary/80 font-medium"
                   >
                     View Details
                   </button>
-                  <button 
+                   <button 
                     onClick={() => {}}
-                    className="ml-2 text-sm text-gray-500 hover:text-gray-700"
+                    className="ml-2 text-sm text-gray-500 hover:text-red-600 font-medium"
                   >
                     Delete
                   </button>

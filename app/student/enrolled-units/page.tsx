@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function EnrolledUnits() {
@@ -82,42 +83,47 @@ export default function EnrolledUnits() {
     }
   ];
 
+  const subjectColors: Record<string, { bg: string; text: string; bar: string }> = {
+    Physics: { bg: "bg-blue-100", text: "text-blue-600", bar: "bg-blue-500" },
+    Mathematics: { bg: "bg-green-100", text: "text-green-600", bar: "bg-green-500" },
+  };
+  const getColors = (subject: string) => subjectColors[subject] ?? { bg: "bg-gray-100", text: "text-gray-600", bar: "bg-gray-500" };
+
   const filteredUnits = units.filter(unit => 
     filterStatus === "all" || unit.status === filterStatus
   );
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Enrolled Units</h1>
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2">
             <label className="text-sm font-medium text-gray-700">View:</label>
             <div className="flex space-x-1">
+              <div className="flex space-x-1 bg-gray-100 p-0.5 rounded-lg">
               <button 
                 onClick={() => setViewMode("list")}
-                className={`px-3 py-1 text-sm font-medium rounded 
-                        ${viewMode === "list" ? "bg-primary text-primary-foreground" : "bg-gray-200 text-gray-600"}
-                        hover:bg-primary/10 hover:text-primary`}
+                className={`px-3 py-1.5 text-sm font-semibold rounded-lg transition-all
+                        ${viewMode === "list" ? "bg-white text-primary shadow-sm" : "text-gray-600 hover:text-gray-800"}`}
               >
                 List
               </button>
               <button 
                 onClick={() => setViewMode("grid")}
-                className={`px-3 py-1 text-sm font-medium rounded 
-                        ${viewMode === "grid" ? "bg-primary text-primary-foreground" : "bg-gray-200 text-gray-600"}
-                        hover:bg-primary/10 hover:text-primary`}
+                className={`px-3 py-1.5 text-sm font-semibold rounded-lg transition-all
+                        ${viewMode === "grid" ? "bg-white text-primary shadow-sm" : "text-gray-600 hover:text-gray-800"}`}
               >
                 Grid
               </button>
               <button 
                 onClick={() => setViewMode("cards")}
-                className={`px-3 py-1 text-sm font-medium rounded 
-                        ${viewMode === "cards" ? "bg-primary text-primary-foreground" : "bg-gray-200 text-gray-600"}
-                        hover:bg-primary/10 hover:text-primary`}
+                className={`px-3 py-1.5 text-sm font-semibold rounded-lg transition-all
+                        ${viewMode === "cards" ? "bg-white text-primary shadow-sm" : "text-gray-600 hover:text-gray-800"}`}
               >
                 Cards
               </button>
+              </div>
             </div>
           </div>
           
@@ -126,7 +132,7 @@ export default function EnrolledUnits() {
             <select
               value={filterStatus}
               onChange={(e) => setFilterStatus(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               <option value="all">All Units</option>
               <option value="active">Active</option>
@@ -137,10 +143,10 @@ export default function EnrolledUnits() {
         </div>
       </div>
       
-      <div className="mb-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-semibold text-gray-900">Summary</h2>
-          <div className="flex space-x-4">
+          <div className="flex space-x-6">
             <div className="text-center">
               <p className="text-sm font-medium text-gray-500">Total Units</p>
               <p className="text-2xl font-bold text-gray-900">{units.length}</p>
@@ -160,7 +166,7 @@ export default function EnrolledUnits() {
           </div>
         </div>
         
-        <div className="flex space-x-4">
+        <div className="flex space-x-6 pt-4 border-t border-gray-100">
           <div className="flex-1">
             <div className="flex items-center">
               <div className="w-3 h-3 rounded-full bg-blue-500"></div>
@@ -170,7 +176,7 @@ export default function EnrolledUnits() {
           </div>
           
           <div className="flex-1">
-            <div class="flex items-center">
+            <div className="flex items-center">
               <div className="w-3 h-3 rounded-full bg-green-500"></div>
               <span className="ml-2 text-sm font-medium text-gray-700">Mathematics</span>
             </div>
@@ -182,24 +188,24 @@ export default function EnrolledUnits() {
       {viewMode === "list" && (
         <div className="space-y-4">
           {filteredUnits.map(unit => (
-            <div key={unit.id} className="border border-gray-200 rounded-lg p-4">
+            <div key={unit.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
               <div className="flex items-center justify-between">
-                <div className="flex items-center">
-                  <div className="flex-shrink-0 w-10 h-10">
-                    <div className={`bg-${unit.subject === "Physics" ? "blue" : "green"}-100 rounded flex items-center justify-center`}>
-                      <span className="text-${unit.subject === "Physics" ? "blue" : "green"}-600 font-bold">{unit.code}</span>
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0 w-10 h-10">
+                      <div className={`${getColors(unit.subject).bg} rounded-lg flex items-center justify-center`}>
+                      <span className={`${getColors(unit.subject).text} font-bold`}>{unit.code}</span>
+                      </div>
+                    </div>
+                    <div className="flex-1 ml-3">
+                      <h3 className="font-medium text-gray-900">{unit.subject} {unit.name}</h3>
+                      <p className="text-sm text-gray-500">{unit.syllabusCoverage}</p>
                     </div>
                   </div>
-                  <div className="flex-1 ml-3">
-                    <h3 className="font-medium text-gray-900">{unit.subject} {unit.name}</h3>
-                    <p className="text-sm text-gray-500">{unit.syllabusCoverage}</p>
-                  </div>
-                </div>
                 <div className="flex items-center space-x-3">
                   <div className="flex items-center">
                     <span className="text-sm font-medium text-gray-500">Progress:</span>
                     <div className="w-16 h-4 bg-gray-200 rounded overflow-hidden">
-                      <div className={`h-full bg-${unit.subject === "Physics" ? "blue" : "green"}-500`} style={{ width: `${unit.progress}%` }}></div>
+                      <div className={`h-full ${getColors(unit.subject).bar}`} style={{ width: `${unit.progress}%` }}></div>
                     </div>
                     <span className="ml-2 text-sm font-medium text-gray-900">{unit.progress}%</span>
                   </div>
@@ -237,7 +243,7 @@ export default function EnrolledUnits() {
               <div className="mt-4">
                 <button 
                   onClick={() => {}}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -259,12 +265,12 @@ export default function EnrolledUnits() {
       {viewMode === "grid" && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredUnits.map(unit => (
-            <div key={unit.id} className="border border-gray-200 rounded-lg p-4">
+            <div key={unit.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:border-gray-200 transition-colors">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 w-8 h-8">
-                    <div className={`bg-${unit.subject === "Physics" ? "blue" : "green"}-100 rounded flex items-center justify-center`}>
-                      <span className="text-${unit.subject === "Physics" ? "blue" : "green"}-600 font-bold">{unit.code}</span>
+                    <div className={`${getColors(unit.subject).bg} rounded-lg flex items-center justify-center`}>
+                      <span className={`${getColors(unit.subject).text} font-bold`}>{unit.code}</span>
                     </div>
                   </div>
                   <div className="flex-1 ml-3">
@@ -286,7 +292,7 @@ export default function EnrolledUnits() {
                 <div className="flex items-center justify-between">
                   <span className="text-sm font-medium text-gray-500">Progress:</span>
                   <div className="w-20 h-2 bg-gray-200 rounded overflow-hidden">
-                    <div className={`h-full bg-${unit.subject === "Physics" ? "blue" : "green"}-500`} style={{ width: `${unit.progress}%` }}></div>
+                    <div className={`h-full ${getColors(unit.subject).bar}`} style={{ width: `${unit.progress}%` }}></div>
                   </div>
                   <span className="ml-2 text-sm font-medium text-gray-900">{unit.progress}%</span>
                 </div>
@@ -307,7 +313,7 @@ export default function EnrolledUnits() {
               <div className="mt-4">
                 <button 
                   onClick={() => {}}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -329,12 +335,12 @@ export default function EnrolledUnits() {
       {viewMode === "cards" && (
         <div className="space-y-4">
           {filteredUnits.map(unit => (
-            <div key={unit.id} className="border border-gray-200 rounded-lg p-6">
+            <div key={unit.id} className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   <div className="flex-shrink-0 w-12 h-12">
-                    <div className={`bg-${unit.subject === "Physics" ? "blue" : "green"}-100 rounded flex items-center justify-center`}>
-                      <span className="text-${unit.subject === "Physics" ? "blue" : "green"}-600 font-bold text-2xl">{unit.code}</span>
+                    <div className={`${getColors(unit.subject).bg} rounded flex items-center justify-center`}>
+                      <span className={`${getColors(unit.subject).text} font-bold text-2xl`}>{unit.code}</span>
                     </div>
                   </div>
                   <div className="flex-1 ml-4">
@@ -387,7 +393,7 @@ export default function EnrolledUnits() {
               <div className="mt-4">
                 <button 
                   onClick={() => {}}
-                  className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+                  className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
                 >
                   <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />

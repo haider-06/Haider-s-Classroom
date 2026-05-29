@@ -1,3 +1,4 @@
+"use client";
 import { useState } from "react";
 
 export default function Attendance() {
@@ -103,7 +104,7 @@ export default function Attendance() {
   const attendancePercentage = Math.round((presentCount + lateCount) / totalClasses * 100);
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Attendance</h1>
         <div className="flex items-center gap-4">
@@ -112,7 +113,7 @@ export default function Attendance() {
             <select
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               {months.map(month => (
                 <option key={month.value} value={month.value}>
@@ -127,7 +128,7 @@ export default function Attendance() {
             <select
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="border border-gray-300 rounded px-3 py-2"
+              className="border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none bg-white"
             >
               {years.map(year => (
                 <option key={year} value={year.toString()}>
@@ -141,21 +142,21 @@ export default function Attendance() {
       
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 mb-6">
         {/* Summary Cards */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Present</h3>
               <p className="text-2xl font-bold text-gray-900">{presentCount}</p>
             </div>
-            <div className="bg-green-50 p-3 rounded-full">
-              <svg className="h-5 w-5 text-green-500" viewBox="0 0 20 20" fill="currentColor">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
               </svg>
             </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Absent</h3>
@@ -169,7 +170,7 @@ export default function Attendance() {
           </div>
         </div>
         
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Late</h3>
@@ -183,14 +184,14 @@ export default function Attendance() {
           </div>
         </div>
         
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-sm font-medium text-gray-500">Attendance Rate</h3>
               <p className="text-2xl font-bold text-gray-900">{attendancePercentage}%</p>
             </div>
-            <div className="bg-purple-50 p-3 rounded-full">
-              <svg className="h-5 w-5 text-purple-500" viewBox="0 0 20 20" fill="currentColor">
+            <div className="bg-primary/10 p-3 rounded-full">
+              <svg className="h-5 w-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
               </svg>
             </div>
@@ -198,25 +199,25 @@ export default function Attendance() {
         </div>
       </div>
       
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
         <h2 className="text-lg font-semibold text-gray-900 mb-4">Attendance Records</h2>
         
         <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Day</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Subject</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Time</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Remarks</th>
+          <table className="min-w-full">
+            <thead>
+              <tr className="bg-gray-50 text-gray-600 uppercase text-xs font-semibold">
+                <th className="px-6 py-3 text-left">Date</th>
+                <th className="px-6 py-3 text-left">Day</th>
+                <th className="px-6 py-3 text-left">Subject</th>
+                <th className="px-6 py-3 text-left">Unit</th>
+                <th className="px-6 py-3 text-left">Time</th>
+                <th className="px-6 py-3 text-left">Status</th>
+                <th className="px-6 py-3 text-left">Remarks</th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-100">
               {attendanceData.map(record => (
-                <tr key={record.date} className="hover:bg-gray-50">
+                <tr key={record.date} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{record.date}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{record.day}</td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{record.subject}</td>
@@ -239,8 +240,7 @@ export default function Attendance() {
         
         <div className="mt-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-3">Attendance Trend</h3>
-          <div className="h-48 bg-gray-50 rounded">
-            {/* Line chart would go here */}
+          <div className="h-48 bg-gray-50 rounded-lg border border-gray-100">
             <div className="flex h-full items-center justify-center text-gray-400">
               Attendance Trend Chart
             </div>

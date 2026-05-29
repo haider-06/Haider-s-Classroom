@@ -125,12 +125,12 @@ export default function TeacherPayment() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 space-y-6 bg-gray-50 min-h-screen">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold text-gray-900">Payment</h1>
         <button 
           onClick={() => {}}
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+          className="flex items-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
         >
           <svg className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-1.414-1.414a1 1 0 00-1.414 1.414L8.586 9.586V13a1 1 0 002 0V9.586l1.293 1.293a1 1 0 001.414-1.414z" clipRule="evenodd" />
@@ -141,7 +141,7 @@ export default function TeacherPayment() {
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Payment Form */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Record Payment</h2>
           </div>
@@ -153,7 +153,7 @@ export default function TeacherPayment() {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Search by student ID or name"
                 disabled={processing}
               />
@@ -165,7 +165,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedMonth}
                   onChange={(e) => setSelectedMonth(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   disabled={processing}
                 >
                   <option value="">Select Month</option>
@@ -182,7 +182,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   disabled={processing}
                 >
                   <option value="">Select Year</option>
@@ -201,7 +201,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedFeeType}
                   onChange={(e) => setSelectedFeeType(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   disabled={processing}
                 >
                   <option value="">Select Fee Type</option>
@@ -218,7 +218,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedUnit}
                   onChange={(e) => setSelectedUnit(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                   disabled={processing}
                 >
                   <option value="">Select Unit (Optional)</option>
@@ -237,7 +237,7 @@ export default function TeacherPayment() {
                 type="number"
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Enter amount"
                 disabled={processing}
               />
@@ -285,7 +285,7 @@ export default function TeacherPayment() {
             <button
               type="submit"
               disabled={processing || !amount || !selectedMonth || !selectedYear}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-primary text-primary-foreground hover:bg-primary/90 rounded-md"
+              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-primary text-white hover:bg-primary/90 rounded-xl font-semibold shadow-sm"
             >
               {processing ? (
                 <>
@@ -305,7 +305,7 @@ export default function TeacherPayment() {
         </div>
         
         {/* Filters */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Filter Payments</h2>
           </div>
@@ -317,7 +317,7 @@ export default function TeacherPayment() {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full border border-gray-300 rounded px-3 py-2"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 placeholder="Search by student ID or name"
               />
             </div>
@@ -328,7 +328,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedMonth}
                   onChange={(e) => setSelectedMonth(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 >
                   <option value="">All Months</option>
                   {months.map(month => (
@@ -344,7 +344,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 >
                   <option value="">All Years</option>
                   {years.map(year => (
@@ -362,7 +362,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedFeeType}
                   onChange={(e) => setSelectedFeeType(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 >
                   <option value="">All Fee Types</option>
                   {feeTypes.map(feeType => (
@@ -378,7 +378,7 @@ export default function TeacherPayment() {
                 <select
                   value={selectedUnit}
                   onChange={(e) => setSelectedUnit(e.target.value)}
-                  className="w-full border border-gray-300 rounded px-3 py-2"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none"
                 >
                   <option value="">All Units</option>
                   {units.map(unit => (
@@ -393,7 +393,7 @@ export default function TeacherPayment() {
         </div>
         
         {/* Payments List */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-semibold text-gray-900">Payment Records</h2>
             <span className="text-sm text-gray-500">{filteredPayments.length} payments</span>
@@ -403,16 +403,16 @@ export default function TeacherPayment() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Student</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Amount</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Month/Year</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fee Type</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Unit</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Method</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">ID</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Student</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Amount</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Month/Year</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Fee Type</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Unit</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Date</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Method</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Status</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-600 uppercase">Actions</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -439,13 +439,13 @@ export default function TeacherPayment() {
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                       <button 
                         onClick={() => {}}
-                        className="text-primary hover:text-primary/80"
+                        className="text-primary hover:text-primary/80 font-medium"
                       >
                         Receipt
                       </button>
                       <button 
                         onClick={() => {}}
-                        className="ml-2 text-gray-500 hover:text-gray-700"
+                        className="ml-2 text-gray-500 hover:text-gray-700 font-medium"
                       >
                         Edit
                       </button>
@@ -455,7 +455,7 @@ export default function TeacherPayment() {
                 
                 {filteredPayments.length === 0 && (
                   <tr>
-                    <td className="px-6 py-4 text-center text-gray-500" colSpan="10">
+                    <td className="px-6 py-4 text-center text-gray-500" colSpan={10}>
                       No payments found matching your criteria.
                     </td>
                   </tr>
